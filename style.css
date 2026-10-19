@@ -42,3 +42,30 @@ body{background:#fbfcfa}.notice{background:#283a30;color:#e1eee2}.topline{backgr
 @media (min-width:1151px) and (max-width:1250px) {
   .quick-nav { top:auto; max-height:none; }
 }
+
+/* FINAL FIX: stable sidebar and uncropped hero photo. */
+.hero-art{background:#26372d;min-height:0;aspect-ratio:4 / 3;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-photo{width:100%;height:100%;min-height:0;object-fit:contain;object-position:center;display:block}
+.hero-art::after{inset:auto 0 0;height:85px;background:linear-gradient(transparent,#15231aaa)}
+@media(min-width:1051px){
+ body:has(.quick-nav-shell) main{margin-right:250px}
+ body:has(.quick-nav-shell) main > .section.wrap:not(.gallery-section),
+ body:has(.quick-nav-shell) main > .gallery-section.wrap,
+ body:has(.quick-nav-shell) main > .promo .wrap,
+ body:has(.quick-nav-shell) main > .bottom-cta .wrap{padding-right:28px}
+ .quick-nav-shell{height:0!important;padding:0!important;position:static!important}
+ .quick-nav{position:fixed!important;right:16px!important;top:105px!important;width:218px!important;max-height:calc(100dvh - 120px)!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;grid-template-columns:none!important;gap:3px!important;z-index:15!important;box-shadow:0 12px 35px #15271c20!important}
+ .quick-nav .eyebrow{display:block!important;grid-column:auto!important;margin:5px 7px 9px!important}
+ .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:26px}
+ .hero-grid>div{min-width:0}
+ .hero-grid h1{font-size:clamp(43px,4.6vw,73px)}
+}
+@media(max-width:1050px){
+ body:has(.quick-nav-shell) main{margin-right:0!important}
+ .quick-nav-shell{height:auto!important;position:relative!important;padding-top:24px!important;padding-bottom:16px!important}
+ .quick-nav{position:static!important;width:100%!important;max-height:none!important;overflow:visible!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;box-shadow:none!important}
+ .quick-nav .eyebrow{grid-column:1/-1!important;display:block!important}
+ .hero-grid{grid-template-columns:1fr}
+ .hero-art{max-width:720px;width:100%;margin-bottom:40px}
+}
+@media(max-width:520px){.quick-nav{grid-template-columns:1fr!important}.hero-art{aspect-ratio:4 / 3}}
