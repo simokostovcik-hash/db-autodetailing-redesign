@@ -69,3 +69,29 @@ body{background:#fbfcfa}.notice{background:#283a30;color:#e1eee2}.topline{backgr
  .hero-art{max-width:720px;width:100%;margin-bottom:40px}
 }
 @media(max-width:520px){.quick-nav{grid-template-columns:1fr!important}.hero-art{aspect-ratio:4 / 3}}
+
+/* Full-width section backgrounds beneath the floating quick-navigation panel.
+   Keep the actual text/images clear of the right-hand navigation rail. */
+@media (min-width:1051px) {
+  body:has(.quick-nav-shell) main { margin-right:0 !important; width:100%; }
+  body:has(.quick-nav-shell) main > .hero,
+  body:has(.quick-nav-shell) main > .promo,
+  body:has(.quick-nav-shell) main > .bottom-cta,
+  body:has(.quick-nav-shell) main > .gallery-section,
+  body:has(.quick-nav-shell) main > .section { width:100%; box-sizing:border-box; }
+  body:has(.quick-nav-shell) main .wrap { max-width:calc(1180px + 250px); padding-right:278px !important; box-sizing:border-box; }
+  body:has(.quick-nav-shell) main > .gallery-section.wrap { max-width:none; padding-left:max(28px, calc((100vw - 1430px)/2 + 28px)); }
+  body:has(.quick-nav-shell) .quick-nav { z-index:30 !important; }
+}
+
+/* Přesouvatelná rychlá navigace – pouze desktop */
+.quick-nav-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0}
+.quick-nav-heading .eyebrow{margin:5px 0 9px 7px!important;min-width:0}
+.quick-nav-drag{appearance:none;border:1px solid #d8e2d9;background:#edf3ec;color:#345542;border-radius:9px;width:34px;height:34px;display:grid;place-items:center;font-size:24px;line-height:1;cursor:grab;touch-action:none;user-select:none;flex:none}
+.quick-nav-drag:hover,.quick-nav-drag:focus-visible{background:#dce9dc;outline:2px solid #82a58a;outline-offset:2px}
+.quick-nav-drag:active,.quick-nav.is-dragging .quick-nav-drag{cursor:grabbing}
+@media(min-width:1101px){
+ .quick-nav.is-dragged{left:var(--quick-nav-x)!important;top:var(--quick-nav-y)!important;right:auto!important;bottom:auto!important}
+ .quick-nav.is-dragging{transition:none!important;user-select:none}
+}
+@media(max-width:1100px){.quick-nav-drag{display:none}.quick-nav-heading{grid-column:1/-1}}
